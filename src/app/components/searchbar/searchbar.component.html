@@ -1,26 +1,29 @@
-<div class="d-flex flex-column w-75">
-  <form class="d-flex flex-row w-100">
-    <input
-      [(ngModel)]="search"
-      class="form-control"
-      placeholder="Your city"
-      name="search"
-      autocomplete="off"
-      (keyup)="handleSearch()"
-    />
-    <button class="btn btn-primary" (click)="handleSearch()">SEARCH</button>
-  </form>
-  <app-result-card
-    title="{{ resultItem.title }}"
-    id="{{ resultItem.id }}"
-  ></app-result-card>
-  <ul class="w-100">
-    <li
-      *ngFor="let item of results"
-      id="{{ item.id }}"
-      (click)="handleResult(item.id)"
-    >
-      {{ item.title }} <app-favourite itemId="{{ item.id }}"></app-favourite>
-    </li>
-  </ul>
+<div class="w-100 d-flex align-items-center justify-content-center m-0 p-0">
+  <div class="d-flex flex-column wrapper align-items-center mt-5">
+    <form class="d-flex flex-row searchbar">
+      <input
+        [(ngModel)]="search"
+        class="form-control"
+        placeholder="Your city"
+        name="search"
+        autocomplete="off"
+        (keyup)="handleSearch()"
+      />
+      <button class="btn btn-primary" (click)="handleSearch()">SEARCH</button>
+    </form>
+    <ul class="list results">
+      <li
+        *ngFor="let item of results"
+        id="{{ item.id }}"
+        (click)="handleResult(item.id)"
+      >
+        {{ item.title }}
+      </li>
+    </ul>
+    <app-result-card
+      *ngIf="displayElement"
+      title="{{ resultItem.title }}"
+      id="{{ resultItem.id }}"
+    ></app-result-card>
+  </div>
 </div>

@@ -12,13 +12,14 @@ export class FavouriteComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const favArray = localStorage.getItem('favorites')?.split(',');
-    for (const id of favArray!) {
-      if (id == this.itemId) {
-        this.active = 'bookmark';
-        break;
+    setTimeout(() => {
+      const favArray = localStorage.getItem('favorites')?.split(',');
+      for (const id of favArray!) {
+        if (id == this.itemId) {
+          this.active = 'bookmark';
+        }
       }
-    }
+    }, 100);
   }
 
   onClick() {

@@ -12,6 +12,7 @@ export class ResultCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.title);
+    if (this.id === '') {
+    }
   }
 }

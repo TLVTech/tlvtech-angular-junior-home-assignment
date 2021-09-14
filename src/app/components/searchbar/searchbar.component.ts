@@ -10,8 +10,10 @@ export class SearchbarComponent implements OnInit {
   search: string = '';
   results: any = [];
   resultItem: any = {};
+  displayElement: boolean = true;
 
   handleSearch() {
+    this.displayElement = false;
     this.api.apiCall().subscribe((data: any) => {
       this.results = [];
       for (const item of data) {
@@ -28,14 +30,24 @@ export class SearchbarComponent implements OnInit {
         if (item.id === id) {
           this.results = [];
           this.resultItem = item;
+
+          const favorites = localStorage.getItem('favorites');
+          if (favorites!.includes(item.id)) {
+          } else {
+          }
         }
       }
     });
+    this.displayElement = true;
   }
 
   constructor(private api: GetApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.resultItem.id) {
+      this.displayElement = false;
+    }
+  }
 }
 
 interface City {

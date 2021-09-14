@@ -1,0 +1,30 @@
+.navbar {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-bottom: 2px solid black;
+  box-shadow: 3px 4px 50px rgb(63, 63, 63);
+}
+.navbar h1 {
+  color: white;
+  text-shadow: 5px 5px 15px black;
+  font-family: "Glory", sans-serif;
+  cursor: default;
+}
+
+.navbar button {
+  font-family: "Glory", sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
