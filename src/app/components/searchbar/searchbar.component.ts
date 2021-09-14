@@ -9,48 +9,47 @@ import { GetApiService } from 'src/app/services/get-api.service';
 export class SearchbarComponent implements OnInit {
   search: string = '';
   results: any = [];
-  resultItem: any = {};
   displayElement: boolean = true;
+  isFahrenheit: boolean = false;
 
-  handleSearch() {
+  location: string = '';
+  currentTemperature: string = '';
+  forecasts: any[];
+  key: string = '';
+
+  handleSearch($event: any) {
     this.displayElement = false;
-    this.api.apiCall().subscribe((data: any) => {
-      this.results = [];
-      for (const item of data) {
-        if (item.title.toLowerCase().includes(this.search.toLowerCase())) {
-          this.results.push(item);
-        }
-      }
-    });
+    this.api
+      .apiAutoComplete($event.target.elements.search.value)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.results = [];
+        this.results = data;
+      });
   }
 
-  handleResult(id: string) {
-    this.api.apiCall().subscribe((data: any) => {
-      for (const item of data) {
-        if (item.id === id) {
-          this.results = [];
-          this.resultItem = item;
-
-          const favorites = localStorage.getItem('favorites');
-          if (favorites!.includes(item.id)) {
-          } else {
-          }
-        }
-      }
-    });
+  handleResult(Key: string) {
+    this.key = Key;
+    this.results = [];
     this.displayElement = true;
+
+    this.api.apiGetCurrent(Key).subscribe((data: any) => {
+      console.log(data);
+      this.currentTemperature = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+    });
+
+    this.api.apiGetForecast(Key).subscribe((data: any) => {
+      console.log(data.DailyForecasts);
+      this.forecasts = data.DailyForecasts;
+    });
+
+    this.api.apiGetLocation(Key).subscribe((data: any) => {
+      console.log(data);
+      this.location = `${data.Country.EnglishName}, ${data.LocalizedName}`;
+    });
   }
 
   constructor(private api: GetApiService) {}
 
-  ngOnInit(): void {
-    if (!this.resultItem.id) {
-      this.displayElement = false;
-    }
-  }
-}
-
-interface City {
-  title: string;
-  id: any;
+  ngOnInit(): void {}
 }

@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./favourite.component.css'],
 })
 export class FavouriteComponent implements OnInit {
-  @Input() 'itemId': any;
+  @Input() 'key': any;
   active: string = 'bookmark_border';
 
   constructor() {}
@@ -15,7 +15,7 @@ export class FavouriteComponent implements OnInit {
     setTimeout(() => {
       const favArray = localStorage.getItem('favorites')?.split(',');
       for (const id of favArray!) {
-        if (id == this.itemId) {
+        if (id == this.key) {
           this.active = 'bookmark';
         }
       }
@@ -24,18 +24,18 @@ export class FavouriteComponent implements OnInit {
 
   onClick() {
     const favorites = localStorage.getItem('favorites');
-    if (favorites!.includes(this.itemId)) {
+    if (favorites!.includes(this.key)) {
       const favArray = favorites!.split(',');
       console.log(favArray);
-      const index = favArray.indexOf(this.itemId);
+      const index = favArray.indexOf(this.key);
       console.log(index);
       favArray.splice(index, 1);
       localStorage.setItem('favorites', favArray.toString());
       this.active = 'bookmark_border';
     }
-    if (!favorites!.includes(this.itemId)) {
+    if (!favorites!.includes(this.key)) {
       const favArray = favorites?.split(' , ');
-      favArray?.push(this.itemId);
+      favArray?.push(this.key);
       localStorage.setItem('favorites', favArray!.toString());
       this.active = 'bookmark';
     }

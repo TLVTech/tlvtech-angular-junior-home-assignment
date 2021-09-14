@@ -1,11 +1,26 @@
-<div class="item-wrapper">
+<div *ngIf="displayElement" class="item-wrapper">
   <div class="selected-item">
     <div class="w-100 header">
-      <h1 class="title">{{ title }}</h1>
-      <app-favourite class="save-icon" itemId="{{ id }}"></app-favourite>
+      <h4 class="title">{{ location }}</h4>
+      <app-favourite class="save-icon" key="{{ key }}"></app-favourite>
     </div>
     <div class="d-flex flex-row details">
-      <h2>{{ id }}</h2>
+      <h2>
+        {{ currentTemperature }}
+      </h2>
     </div>
+    <ul>
+      <li *ngFor="let item of forecasts">
+        <span>
+          {{ item.Date | date: "EEEEEE" }}
+        </span>
+        <span>
+          {{ item.Temperature.Minimum.Value
+          }}{{ item.Temperature.Minimum.Unit }} -
+          {{ item.Temperature.Maximum.Value
+          }}{{ item.Temperature.Maximum.Unit }}
+        </span>
+      </li>
+    </ul>
   </div>
 </div>

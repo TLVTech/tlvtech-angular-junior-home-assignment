@@ -1,7 +1,9 @@
 <div>
   <app-result-card
     *ngFor="let item of savedItems"
-    title="{{ item.title }}"
-    id="{{ item.id }}"
+    key="{{ item.key }}"
+    location="{{ item.location }}"
+    currentTemperature="{{ item.currentTemperature }}"
+    [forecasts]="item.forecasts"
   ></app-result-card>
 </div>

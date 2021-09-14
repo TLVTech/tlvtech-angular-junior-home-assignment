@@ -1,29 +1,30 @@
 <div class="w-100 d-flex align-items-center justify-content-center m-0 p-0">
   <div class="d-flex flex-column wrapper align-items-center mt-5">
-    <form class="d-flex flex-row searchbar">
+    <form class="d-flex flex-row searchbar" (submit)="handleSearch($event)">
       <input
         [(ngModel)]="search"
         class="form-control"
         placeholder="Your city"
         name="search"
         autocomplete="off"
-        (keyup)="handleSearch()"
       />
-      <button class="btn btn-primary" (click)="handleSearch()">SEARCH</button>
+      <button type="submit" class="btn btn-primary">SEARCH</button>
     </form>
     <ul class="list results">
       <li
         *ngFor="let item of results"
-        id="{{ item.id }}"
-        (click)="handleResult(item.id)"
+        id="{{ item.Key }}"
+        (click)="handleResult(item.Key)"
       >
-        {{ item.title }}
+        {{ item.Country.LocalizedName }}, {{ item.LocalizedName }}
       </li>
     </ul>
     <app-result-card
       *ngIf="displayElement"
-      title="{{ resultItem.title }}"
-      id="{{ resultItem.id }}"
+      key="{{ key }}"
+      location="{{ location }}"
+      currentTemperature="{{ currentTemperature }}"
+      [forecasts]="forecasts"
     ></app-result-card>
   </div>
 </div>

@@ -6,13 +6,21 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./result-card.component.css'],
 })
 export class ResultCardComponent implements OnInit {
-  @Input() 'title': string;
-  @Input() 'id': string;
+  @Input() 'location': string;
+  @Input() 'forecasts': any[];
+  @Input() 'currentTemperature': string;
+  @Input() 'key': string;
+  displayElement: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.id === '') {
-    }
+    setTimeout(() => {
+      if (this.location === '') {
+        this.displayElement = false;
+      } else {
+        this.displayElement = true;
+      }
+    }, 50);
   }
 }
