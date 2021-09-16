@@ -18,7 +18,8 @@ export class FavouritesPageComponent implements OnInit {
       let obj: any = {};
 
       this.api.apiGetCurrent(key).subscribe((data: any) => {
-        obj.currentTemperature = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+        obj.currentTemperatureImperial = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+        obj.currentTemperatureMetric = `${data[0].Temperature.Metric.Value}${data[0].Temperature.Metric.Unit}`;
       });
 
       this.api.apiGetForecast(key).subscribe((data: any) => {

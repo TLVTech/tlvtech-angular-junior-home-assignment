@@ -1,12 +1,14 @@
-<div class="=w-100 p-1 navbar">
+<div class="=w-100 navbar">
   <div class="w-25 d-flex flex-row align-items-center justify-content-center">
-    <button class="btn btn-primary m-3" (click)="handleRoute('')">
-      Search
-    </button>
-    <button class="btn btn-primary m-3" (click)="handleRoute('favorites')">
+    <button class="btn btn-primary" (click)="handleRoute('')">Search</button>
+    <button class="btn btn-primary" (click)="handleRoute('favorites')">
       Favorites
     </button>
   </div>
   <h1>Weather App</h1>
-  <div class="w-25"></div>
+  <div class="w-25 icon-wrapper">
+    <span class="material-icons brightness" (click)="handleBrightness()">
+      settings_brightness
+    </span>
+  </div>
 </div>

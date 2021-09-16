@@ -4,17 +4,34 @@
       <h4 class="title">{{ location }}</h4>
       <app-favourite class="save-icon" key="{{ key }}"></app-favourite>
     </div>
-    <div class="d-flex flex-row details">
-      <h2>
-        {{ currentTemperature }}
-      </h2>
+    <div
+      class="d-flex flex-row justify-content-between w-100 align-items-center"
+    >
+      <div class="d-flex flex-row details">
+        <h2 *ngIf="isImperial; else metric">
+          {{ currentTemperatureImperial }}
+        </h2>
+        <ng-template #metric>
+          <h2>
+            {{ currentTemperatureMetric }}
+          </h2>
+        </ng-template>
+        <img src="../../../assets/weather icon/{{ img }}.png" alt="" />
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="handleTemperatureType()">
+          F/C
+        </button>
+      </div>
     </div>
-    <ul>
-      <li *ngFor="let item of forecasts">
-        <span>
-          {{ item.Date | date: "EEEEEE" }}
+    <ul class="forecasts">
+      <li class="forecast" *ngFor="let item of forecasts">
+        <span class="day">
+          <b>
+            {{ item.Date | date: "EEEEEE" }}
+          </b>
         </span>
-        <span>
+        <span class="temp">
           {{ item.Temperature.Minimum.Value
           }}{{ item.Temperature.Minimum.Unit }} -
           {{ item.Temperature.Maximum.Value

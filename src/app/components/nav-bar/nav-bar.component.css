@@ -14,17 +14,49 @@
   text-shadow: 5px 5px 15px black;
   font-family: "Glory", sans-serif;
   cursor: default;
+  font-size: 3vw;
 }
 
-.navbar button {
+.brightness {
+  font-size: 3.5vw;
+  color: white;
+  cursor: pointer;
+  transition: 250ms;
+  padding: 0;
+  margin: 0;
+}
+.brightness:active {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 250ms;
+}
+.icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn {
+  width: fit-content;
+  font-size: 1.5vw;
+  margin-inline: 0.5vw;
   font-family: "Glory", sans-serif;
+  padding: 0.5vw;
 }
 
 @media only screen and (max-width: 600px) {
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .navbar h1 {
+    font-size: 6vw;
+    padding: 1vw;
+  }
+  .brightness {
+    font-size: 5vw;
+    margin: 0;
+    padding: 0;
+    size: 20%;
+  }
+  .btn {
+    font-size: 4vw;
   }
 }

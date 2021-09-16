@@ -8,9 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ResultCardComponent implements OnInit {
   @Input() 'location': string;
   @Input() 'forecasts': any[];
-  @Input() 'currentTemperature': string;
+  @Input() 'currentTemperatureImperial': string;
+  @Input() 'currentTemperatureMetric': string;
   @Input() 'key': string;
+  @Input() 'img': string;
   displayElement: boolean = false;
+  isImperial: boolean = true;
 
   constructor() {}
 
@@ -22,5 +25,9 @@ export class ResultCardComponent implements OnInit {
         this.displayElement = true;
       }
     }, 50);
+  }
+
+  handleTemperatureType() {
+    this.isImperial = !this.isImperial;
   }
 }

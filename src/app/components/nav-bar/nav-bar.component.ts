@@ -12,6 +12,9 @@ export class NavBarComponent implements OnInit {
   handleRoute(route: String): void {
     this.router.navigate([`${route}`]);
   }
+  handleBrightness() {
+    console.log('Brigtness');
+  }
 
   ngOnInit(): void {}
 }

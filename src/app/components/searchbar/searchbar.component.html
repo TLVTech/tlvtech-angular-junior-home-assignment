@@ -23,8 +23,10 @@
       *ngIf="displayElement"
       key="{{ key }}"
       location="{{ location }}"
-      currentTemperature="{{ currentTemperature }}"
+      currentTemperatureImperial="{{ currentTemperatureImperial }}"
+      currentTemperatureMetric="{{ currentTemperatureMetric }}"
       [forecasts]="forecasts"
+      img="{{ img }}"
     ></app-result-card>
   </div>
 </div>

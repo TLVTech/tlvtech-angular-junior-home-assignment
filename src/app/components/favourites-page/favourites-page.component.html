@@ -3,7 +3,8 @@
     *ngFor="let item of savedItems"
     key="{{ item.key }}"
     location="{{ item.location }}"
-    currentTemperature="{{ item.currentTemperature }}"
+    currentTemperatureImperial="{{ item.currentTemperatureImperial }}"
+    currentTemperatureMetric="{{ item.currentTemperatureMetric }}"
     [forecasts]="item.forecasts"
   ></app-result-card>
 </div>

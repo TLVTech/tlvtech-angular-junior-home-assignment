@@ -13,9 +13,11 @@ export class SearchbarComponent implements OnInit {
   isFahrenheit: boolean = false;
 
   location: string = '';
-  currentTemperature: string = '';
+  currentTemperatureImperial: string = '';
+  currentTemperatureMetric: string = '';
   forecasts: any[];
   key: string = '';
+  img: string = '';
 
   handleSearch($event: any) {
     this.displayElement = false;
@@ -35,7 +37,8 @@ export class SearchbarComponent implements OnInit {
 
     this.api.apiGetCurrent(Key).subscribe((data: any) => {
       console.log(data);
-      this.currentTemperature = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+      this.currentTemperatureImperial = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+      this.currentTemperatureMetric = `${data[0].Temperature.Metric.Value}${data[0].Temperature.Metric.Unit}`;
     });
 
     this.api.apiGetForecast(Key).subscribe((data: any) => {
@@ -51,5 +54,32 @@ export class SearchbarComponent implements OnInit {
 
   constructor(private api: GetApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.api.getPosition().then((pos) => {
+      this.api
+        .apiGetGeolocation(pos.lng.toString(), pos.lat.toString())
+        .subscribe((data: any) => {
+          console.log(data);
+          this.key = data.Key;
+          this.displayElement = true;
+
+          this.api.apiGetCurrent(this.key).subscribe((data: any) => {
+            //console.log(data);
+            this.currentTemperatureImperial = `${data[0].Temperature.Imperial.Value}${data[0].Temperature.Imperial.Unit}`;
+            this.currentTemperatureMetric = `${data[0].Temperature.Metric.Value}${data[0].Temperature.Metric.Unit}`;
+            this.img = data[0].WeatherIcon;
+          });
+
+          this.api.apiGetForecast(this.key).subscribe((data: any) => {
+            //console.log(data.DailyForecasts);
+            this.forecasts = data.DailyForecasts;
+          });
+
+          this.api.apiGetLocation(this.key).subscribe((data: any) => {
+            //console.log(data);
+            this.location = `${data.Country.EnglishName}, ${data.LocalizedName}`;
+          });
+        });
+    });
+  }
 }

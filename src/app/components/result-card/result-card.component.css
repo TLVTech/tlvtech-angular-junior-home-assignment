@@ -4,11 +4,10 @@
   align-items: center;
   justify-content: center;
   margin: 5vh;
-  padding: 25px;
+  padding: 1vw;
+  width: 50vw;
+
   border: 1px solid black;
-  min-width: 50%;
-  width: 75%;
-  min-height: 25vh;
   background: rgb(238, 199, 141);
   background: linear-gradient(
     90deg,
@@ -32,10 +31,21 @@
 }
 
 .item-wrapper {
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 3vh;
+}
+.btn {
+  width: fit-content;
+  font-size: 1.5vw;
+  margin-inline: 0.5vw;
+  font-family: "Glory", sans-serif;
+  padding: 0.5vw;
+  border-radius: 50%;
+  margin-right: 1.5vw;
 }
 
 .details {
@@ -44,22 +54,98 @@
   cursor: default;
   text-align: left;
   font-family: "Glory", sans-serif;
+  float: left;
+}
+.details h2 {
+  font-size: 50px;
+}
+
+.details img {
+  object-fit: cover;
+}
+
+.day {
+  font-family: "Glory", sans-serif;
+  text-align: center;
+  font-size: 1.5vw;
+  width: 100%;
+  height: 100%;
+}
+
+.temp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-family: "Glory", sans-serif;
+  font-size: 1.5vw;
+
+  width: 150%;
+  height: 100%;
+}
+
+.forecasts {
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.forecast {
+  width: 100%;
+  height: 100%;
+  padding: 2.5%;
+  margin: 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(70, 190, 252, 1) 200%
+  );
+  border-radius: 50%;
+  border: 2px solid rgba(0, 98, 255, 0.9);
 }
 
 .title {
   cursor: default;
   text-align: left;
   font-family: "Glory", sans-serif;
+  margin-top: 2vh;
+  margin-left: 2vw;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 780px) {
   .selected-item {
     width: 100vw;
-    margin-right: 0;
-    margin-left: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .item-wrapper {
+    width: 100vw;
+    padding: 0;
+  }
+  .day {
+    font-size: 2.5vw;
+  }
+  .temp {
+    font-size: 2.5vw;
   }
 
-  .title {
-    font-size: 6vw;
+  .btn {
+    font-size: 4vw;
+    padding: 1.5vw;
+    margin-right: 3vw;
   }
 }

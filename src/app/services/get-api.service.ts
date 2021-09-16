@@ -31,4 +31,23 @@ export class GetApiService {
       `http://dataservice.accuweather.com/locations/v1/${key}?apikey=sPZRCClgEwiTa7wHkRo8t0aUfKPZ542M`
     );
   }
+
+  apiGetGeolocation(lat: string, lon: string) {
+    return this.http.get(
+      `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=sPZRCClgEwiTa7wHkRo8t0aUfKPZ542M&q=${lat},${lon}`
+    );
+  }
+
+  getPosition(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (resp) => {
+          resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+  }
 }
