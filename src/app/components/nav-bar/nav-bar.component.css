@@ -1,0 +1,62 @@
+.navbar {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-bottom: 2px solid black;
+  box-shadow: 3px 4px 50px rgb(63, 63, 63);
+}
+.navbar h1 {
+  color: white;
+  text-shadow: 5px 5px 15px black;
+  font-family: "Glory", sans-serif;
+  cursor: default;
+  font-size: 3vw;
+}
+
+.brightness {
+  font-size: 3.5vw;
+  color: white;
+  cursor: pointer;
+  transition: 250ms;
+  padding: 0;
+  margin: 0;
+}
+.brightness:active {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 250ms;
+}
+.icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn {
+  width: fit-content;
+  font-size: 1.5vw;
+  margin-inline: 0.5vw;
+  font-family: "Glory", sans-serif;
+  padding: 0.5vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar h1 {
+    font-size: 6vw;
+    padding: 1vw;
+  }
+  .brightness {
+    font-size: 5vw;
+    margin: 0;
+    padding: 0;
+    size: 20%;
+  }
+  .btn {
+    font-size: 4vw;
+  }
+}

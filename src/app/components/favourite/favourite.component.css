@@ -1,0 +1,29 @@
+.save-icon {
+  font-size: 3vw;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  border: 2px solid rgba(0, 183, 255, 0);
+  transition: 500ms;
+  font-size: 35px;
+}
+
+.save-icon:hover {
+  background-color: rgba(39, 140, 255, 0.1);
+  border: 2px solid rgba(0, 183, 255, 0.2);
+  transition: 500ms;
+}
+
+.bookmark_border {
+  color: rgba(0, 46, 87, 0.6);
+}
+
+.bookmark {
+  color: rgb(0, 109, 251);
+}
+
+@media only screen and (max-width: 600px) {
+  .save-icon {
+    font-size: 6vw;
+  }
+}

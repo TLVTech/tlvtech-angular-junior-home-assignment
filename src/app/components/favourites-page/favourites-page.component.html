@@ -1,0 +1,10 @@
+<div>
+  <app-result-card
+    *ngFor="let item of savedItems"
+    key="{{ item.key }}"
+    location="{{ item.location }}"
+    currentTemperatureImperial="{{ item.currentTemperatureImperial }}"
+    currentTemperatureMetric="{{ item.currentTemperatureMetric }}"
+    [forecasts]="item.forecasts"
+  ></app-result-card>
+</div>

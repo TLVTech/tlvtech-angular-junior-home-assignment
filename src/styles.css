@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+@import url("https://fonts.googleapis.com/css2?family=Glory&display=swap");
+
+body {
+  background: rgb(173, 172, 203);
+  background: linear-gradient(
+    90deg,
+    rgba(173, 172, 203, 1) -25%,
+    rgba(251, 251, 255, 1) 50%,
+    rgba(173, 172, 203, 1) 125%
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

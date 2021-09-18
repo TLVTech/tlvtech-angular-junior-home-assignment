@@ -1,0 +1,32 @@
+<div class="w-100 d-flex align-items-center justify-content-center m-0 p-0">
+  <div class="d-flex flex-column wrapper align-items-center mt-5">
+    <form class="d-flex flex-row searchbar" (submit)="handleSearch($event)">
+      <input
+        [(ngModel)]="search"
+        class="form-control"
+        placeholder="Your city"
+        name="search"
+        autocomplete="off"
+      />
+      <button type="submit" class="btn btn-primary">SEARCH</button>
+    </form>
+    <ul class="list results">
+      <li
+        *ngFor="let item of results"
+        id="{{ item.Key }}"
+        (click)="handleResult(item.Key)"
+      >
+        {{ item.Country.LocalizedName }}, {{ item.LocalizedName }}
+      </li>
+    </ul>
+    <app-result-card
+      *ngIf="displayElement"
+      key="{{ key }}"
+      location="{{ location }}"
+      currentTemperatureImperial="{{ currentTemperatureImperial }}"
+      currentTemperatureMetric="{{ currentTemperatureMetric }}"
+      [forecasts]="forecasts"
+      img="{{ img }}"
+    ></app-result-card>
+  </div>
+</div>
