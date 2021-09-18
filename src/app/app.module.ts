@@ -11,6 +11,7 @@ import { FavouriteComponent } from './components/favourite/favourite.component';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FavouritesPageComponent } from './components/favourites-page/favourites-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, SearchbarComponent, FavouriteComponent, ResultCardComponent, NavBarComponent, FavouritesPageComponent],
@@ -20,6 +21,7 @@ import { FavouritesPageComponent } from './components/favourites-page/favourites
     NgbModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
